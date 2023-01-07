@@ -41,18 +41,18 @@ const App = () => {
         <select value={year} onChange={onChangeHandler}>
           <option ></option>
           {(Object.keys(data)).map((y,index) => {
-            return <option key={index}>{y}</option>
+            return <option  key={index}>{y}</option>
           })}
         </select>
-        <div>
-          {
-
-              year?data[year].map(y => {
-                return (
-                  <li>{y}</li>
-                )
-              }):''
-          }
+        <div id="selected-year">
+              Selected year-{year}
+              <ul>
+                  {year?data[year].map(y => {
+                  return (
+                    <li>{y}</li>
+                  )
+                }):'No year selected'}
+              </ul>
         </div>
     </div>
   )
