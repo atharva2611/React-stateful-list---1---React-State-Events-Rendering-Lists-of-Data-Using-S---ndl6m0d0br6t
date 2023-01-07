@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import '../styles/App.css';
-
+  
 const data = {
   '2018': [
     'Avengers 1',
@@ -26,11 +26,34 @@ const data = {
     'Adventures of Shaktiman'
   ]
 }
+ 
 const App = () => {
-
+  const [year,setYear] = useState('');
+  const onChangeHandler = (event) => {
+    console.log("value is "+event.target.value)
+    console.log(data[year]);
+    setYear(event.target.value)
+ }
+ console.log(Object.keys(data))
   return (
     <div id="main">
-      
+
+        <select value={year} onChange={onChangeHandler}>
+          <option ></option>
+          {(Object.keys(data)).map((y,index) => {
+            return <option key={index}>{y}</option>
+          })}
+        </select>
+        <div>
+          {
+
+              year?data[year].map(y => {
+                return (
+                  <li>{y}</li>
+                )
+              }):''
+          }
+        </div>
     </div>
   )
 }
